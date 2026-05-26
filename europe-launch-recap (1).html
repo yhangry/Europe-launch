@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe Launch — Team Recap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F9F7F3;
+    --ink: #1A1916;
+    --ink-mid: #4A4843;
+    --ink-light: #8A887F;
+    --border: rgba(26,25,22,0.1);
+    --border-strong: rgba(26,25,22,0.2);
+    --accent: #2B4D3A;
+    --accent-light: #EDF2EF;
+    --amber: #C17B2A;
+    --amber-light: #FBF4E8;
+    --red-light: #FAF0EE;
+    --red: #A33D2A;
+    --green-light: #EDF2EF;
+    --green: #2B4D3A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 0.5px solid var(--border-strong);
+    padding: 2rem 0;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .header-date {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+  }
+
+  /* ── MAIN CONTAINER ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2.5rem 6rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 0.5px solid var(--border);
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 0.5px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 6vw, 4rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--ink-mid);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--ink-mid);
+    max-width: 520px;
+    line-height: 1.8;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section {
+    padding: 4rem 0 0;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    flex-shrink: 0;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── SUMMARY STATS ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 0.5px solid var(--border-strong);
+    margin-bottom: 2.5rem;
+  }
+
+  .stat-cell {
+    padding: 1.75rem 1.5rem;
+    border-right: 0.5px solid var(--border-strong);
+    position: relative;
+  }
+
+  .stat-cell:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--ink-mid);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-sub {
+    font-size: 0.72rem;
+    color: var(--ink-light);
+    line-height: 1.5;
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    border-left: 2px solid var(--accent);
+    background: var(--accent-light);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .callout p {
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+  }
+
+  .callout strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── COUNTRY CARDS ── */
+  .country-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-strong);
+    border: 0.5px solid var(--border-strong);
+    margin-bottom: 2.5rem;
+  }
+
+  .country-card {
+    background: var(--cream);
+    padding: 1.75rem;
+  }
+
+  .country-flag-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .flag { font-size: 1.4rem; }
+
+  .country-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 0.82rem;
+  }
+
+  .country-stat-row:last-child { border-bottom: none; }
+
+  .csr-key { color: var(--ink-light); }
+  .csr-val { font-weight: 500; color: var(--ink); }
+
+  /* ── HOTSPOTS TABLE ── */
+  .table-wrap {
+    border: 0.5px solid var(--border-strong);
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+  }
+
+  thead th {
+    text-align: left;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding: 1rem 1.25rem;
+    border-bottom: 0.5px solid var(--border-strong);
+    background: var(--cream);
+  }
+
+  tbody td {
+    padding: 0.9rem 1.25rem;
+    border-bottom: 0.5px solid var(--border);
+    color: var(--ink-mid);
+    vertical-align: middle;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  tbody tr:hover td { background: rgba(26,25,22,0.02); }
+
+  .pill {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .pill-green { background: var(--green-light); color: var(--green); }
+  .pill-amber { background: var(--amber-light); color: var(--amber); }
+  .pill-blue { background: #EEF3FA; color: #2A4A7F; }
+  .pill-neutral { background: rgba(26,25,22,0.06); color: var(--ink-mid); }
+
+  td.city-name { font-weight: 400; color: var(--ink); }
+
+  /* ── WHAT'S WORKING / WHAT NEEDS WORK ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .insight-card {
+    border: 0.5px solid var(--border-strong);
+    padding: 1.5rem 1.75rem;
+  }
+
+  .insight-card-header {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .insight-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 0.85rem;
+    font-size: 0.85rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  .insight-item:last-child { margin-bottom: 0; }
+
+  .insight-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  .dot-green { background: var(--green); }
+  .dot-amber { background: var(--amber); }
+
+  /* ── NEXT STEPS ── */
+  .next-steps {
+    border: 0.5px solid var(--border-strong);
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+
+  .next-step-row {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    align-items: start;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  .next-step-row:last-child { border-bottom: none; }
+  .next-step-row:hover { background: rgba(26,25,22,0.02); }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--ink-light);
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .step-body {}
+  .step-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .step-desc {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  .step-owner {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    white-space: nowrap;
+    padding-top: 3px;
+    background: rgba(26,25,22,0.05);
+    padding: 3px 10px;
+    border-radius: 20px;
+    height: fit-content;
+  }
+
+  /* ── ATTENTION CALLOUT ── */
+  .attention {
+    border-left: 2px solid var(--amber);
+    background: var(--amber-light);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .attention p {
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+  }
+
+  .attention strong { font-weight: 500; color: var(--ink); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 0.5px solid var(--border-strong);
+    margin-top: 5rem;
+    padding: 2rem 0;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-note {
+    font-size: 0.75rem;
+    color: var(--ink-light);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section:nth-child(1) { animation-delay: 0.15s; }
+  .section:nth-child(2) { animation-delay: 0.25s; }
+  .section:nth-child(3) { animation-delay: 0.35s; }
+  .section:nth-child(4) { animation-delay: 0.45s; }
+  .section:nth-child(5) { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-cell:nth-child(2) { border-right: none; }
+    .stat-cell:nth-child(3) { border-top: 0.5px solid var(--border-strong); }
+    .country-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    h1 { font-size: 2.2rem; }
+    .next-step-row { grid-template-columns: 28px 1fr; }
+    .step-owner { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#">yhangry</a>
+    <span class="header-date">Europe Launch · 26 May 2026</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Internal brief</p>
+    <h1>Where we are in <em>Europe</em>, and what happens next</h1>
+    <p class="hero-sub">A snapshot of France, Italy, and Spain — chef supply, customer demand, and the honest gaps. Use this to align before deciding where to push.</p>
+  </section>
+
+  <!-- SUMMARY STATS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">At a glance</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="stat-cell">
+        <div class="stat-num">351</div>
+        <div class="stat-label">Chef sign-ups</div>
+        <div class="stat-sub">FR 143 · IT 122 · ES 86</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">123</div>
+        <div class="stat-label">Activations</div>
+        <div class="stat-sub">Approved · FR 54 · IT 40 · ES 29</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Bookings</div>
+        <div class="stat-sub">Spain · paid then refunded</div>
+      </div>
+    </div>
+    <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: -1px;">
+      <div class="stat-cell">
+        <div class="stat-num">61</div>
+        <div class="stat-label">Dom Flywheel requests sent</div>
+        <div class="stat-sub">FR 4 · IT 5 · ES 2 · 23 pending · 16 failed</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Organic requests</div>
+        <div class="stat-sub">Out of 12 total in BQ so far</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">1</div>
+        <div class="stat-label">EUROLAUNCH redemptions</div>
+        <div class="stat-sub">Client newsletter not converting yet</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>On the numbers:</strong> 61 Dom Flywheel requests have been sent across EU (100 total in the tool — 23 still pending, 16 failed). BQ currently shows only 12 EU orders, so the remaining sent requests likely haven't landed in the DB yet — worth checking with Dom. Of the 12 in BQ, 9 are identifiable as internal test accounts, leaving 3 organic. Activations = approved chefs (bio + photo + approved by the team).</p>
+    </div>
+  </section>
+
+  <!-- BY COUNTRY -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">By country</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="country-grid">
+      <div class="country-card">
+        <div class="country-flag-name"><span class="flag">🇫🇷</span> France</div>
+        <div class="country-stat-row"><span class="csr-key">Sign-ups</span><span class="csr-val">143</span></div>
+        <div class="country-stat-row"><span class="csr-key">Activations (approved)</span><span class="csr-val">54</span></div>
+        <div class="country-stat-row"><span class="csr-key">Profile complete</span><span class="csr-val">63</span></div>
+        <div class="country-stat-row"><span class="csr-key">Chefs who quoted</span><span class="csr-val">137</span></div>
+        <div class="country-stat-row"><span class="csr-key">Total quotes</span><span class="csr-val">40</span></div>
+
+        <div class="country-stat-row"><span class="csr-key">Organic requests</span><span class="csr-val">2</span></div>
+        <div class="country-stat-row"><span class="csr-key">Avg group size</span><span class="csr-val">12 guests</span></div>
+        <div class="country-stat-row"><span class="csr-key">Bookings</span><span class="csr-val">0</span></div>
+      </div>
+      <div class="country-card">
+        <div class="country-flag-name"><span class="flag">🇮🇹</span> Italy</div>
+        <div class="country-stat-row"><span class="csr-key">Sign-ups</span><span class="csr-val">122</span></div>
+        <div class="country-stat-row"><span class="csr-key">Activations (approved)</span><span class="csr-val">40</span></div>
+        <div class="country-stat-row"><span class="csr-key">Profile complete</span><span class="csr-val">53</span></div>
+        <div class="country-stat-row"><span class="csr-key">Chefs who quoted</span><span class="csr-val">88</span></div>
+        <div class="country-stat-row"><span class="csr-key">Total quotes</span><span class="csr-val">33</span></div>
+
+        <div class="country-stat-row"><span class="csr-key">Organic requests</span><span class="csr-val">0</span></div>
+        <div class="country-stat-row"><span class="csr-key">Avg group size</span><span class="csr-val">11 guests</span></div>
+        <div class="country-stat-row"><span class="csr-key">Bookings</span><span class="csr-val">0</span></div>
+      </div>
+      <div class="country-card">
+        <div class="country-flag-name"><span class="flag">🇪🇸</span> Spain</div>
+        <div class="country-stat-row"><span class="csr-key">Sign-ups</span><span class="csr-val">86</span></div>
+        <div class="country-stat-row"><span class="csr-key">Activations (approved)</span><span class="csr-val">29</span></div>
+        <div class="country-stat-row"><span class="csr-key">Profile complete</span><span class="csr-key">34</span></div>
+        <div class="country-stat-row"><span class="csr-key">Chefs who quoted</span><span class="csr-val">74</span></div>
+        <div class="country-stat-row"><span class="csr-key">Total quotes</span><span class="csr-val">39</span></div>
+
+        <div class="country-stat-row"><span class="csr-key">Organic requests</span><span class="csr-val">1</span></div>
+        <div class="country-stat-row"><span class="csr-key">Avg group size</span><span class="csr-val">15 guests</span></div>
+        <div class="country-stat-row"><span class="csr-key">Bookings</span><span class="csr-val">1 (refunded)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOTSPOTS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">Most promising areas</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Country</th>
+            <th>Chefs</th>
+            <th>Approved</th>
+            <th>Flywheel requests</th>
+            <th>Organic requests</th>
+            <th>Chefs quoting</th>
+            <th>Signal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="city-name">Nice / Cannes</td>
+            <td>🇫🇷 France</td>
+            <td>13</td>
+            <td>11</td>
+            <td>2</td>
+            <td>2</td>
+            <td>High</td>
+            <td><span class="pill pill-green">Strongest</span></td>
+          </tr>
+          <tr>
+            <td class="city-name">Paris</td>
+            <td>🇫🇷 France</td>
+            <td>11</td>
+            <td>6</td>
+            <td>1</td>
+            <td>—</td>
+            <td>Medium</td>
+            <td><span class="pill pill-amber">Supply ready</span></td>
+          </tr>
+          <tr>
+            <td class="city-name">Barcelona</td>
+            <td>🇪🇸 Spain</td>
+            <td>10</td>
+            <td>3</td>
+            <td>1</td>
+            <td>—</td>
+            <td>Medium</td>
+            <td><span class="pill pill-blue">Growing</span></td>
+          </tr>
+          <tr>
+            <td class="city-name">Madrid</td>
+            <td>🇪🇸 Spain</td>
+            <td>—</td>
+            <td>—</td>
+            <td>1</td>
+            <td>1</td>
+            <td>—</td>
+            <td><span class="pill pill-amber">Demand signal</span></td>
+          </tr>
+          <tr>
+            <td class="city-name">Milano</td>
+            <td>🇮🇹 Italy</td>
+            <td>5</td>
+            <td>4</td>
+            <td>1</td>
+            <td>—</td>
+            <td>Medium</td>
+            <td><span class="pill pill-amber">Supply ready</span></td>
+          </tr>
+          <tr>
+            <td class="city-name">Firenze / Roma</td>
+            <td>🇮🇹 Italy</td>
+            <td>10</td>
+            <td>2</td>
+            <td>—</td>
+            <td>—</td>
+            <td>Low</td>
+            <td><span class="pill pill-neutral">Early</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="attention">
+      <p><strong>Nice/Cannes is the clearest bet.</strong> Both supply density and real customer demand in the same pocket — that's rare at this stage. If we're picking one city to concentrate demand-gen on first, this is it. Barcelona also has the WVREC 2026 conference lead (23 Oct, 60 pax) which is a concrete near-term revenue opportunity.</p>
+    </div>
+  </section>
+
+  <!-- WHAT'S WORKING / GAPS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">Honest assessment</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="two-col">
+      <div class="insight-card">
+        <div class="insight-card-header">What's working</div>
+        <div class="insight-item">
+          <span class="insight-dot dot-green"></span>
+          <span>Chef recruitment is moving fast — 349 sign-ups in weeks, referral campaign clearly driving volume</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-dot dot-green"></span>
+          <span>Nice/Cannes has both supply density and real demand — the strongest signal we have</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-dot dot-green"></span>
+          <span>France leads on approval quality — 54 approved vs 40 IT, 29 ES</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-dot dot-green"></span>
+          <span>Chefs are engaging with test requests and quoting — the supply side works</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-dot dot-green"></span>
+          <span>Barcelona WVREC 2026 event lead is a real, near-term revenue opportunity</span>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-card-header">Where we're thin</div>
+        <div class="insight-item">
+          <span class="insight-dot dot-amber"></span>
+          <span>1 booking in Spain — paid but immediately refunded. No successful paid conversions yet</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-dot dot-amber"></span>
+          <span>EUROLAUNCH code used once — the client newsletter isn't converting yet</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-dot dot-amber"></span>
+          <span>Most chefs have no city set (65 IT, 42 FR, 27 ES) — hard to match them to real requests</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-dot dot-amber"></span>
+          <span>Organic demand is extremely thin — we haven't solved customer acquisition yet</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-dot dot-amber"></span>
+          <span>Italy approval rate is lowest at 33% — quality or process issue worth investigating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">Next steps</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="next-steps">
+
+      <div class="next-step-row">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <div class="step-title">Push chef city completion</div>
+          <div class="step-desc">134 of 349 chefs have no city set. Without it we can't match them. A targeted email or Sous prompt to chefs missing location data would unblock a lot.</div>
+        </div>
+        <div class="step-owner">Dikshita</div>
+      </div>
+      <div class="next-step-row">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <div class="step-title">Double down on Nice/Cannes demand-gen</div>
+          <div class="step-desc">It's the only city with both supply density and real customer requests. Targeted paid or partner push here makes more sense than spreading thin across all three countries.</div>
+        </div>
+        <div class="step-owner">Heinin</div>
+      </div>
+      <div class="next-step-row">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <div class="step-title">Investigate Italy approval rate</div>
+          <div class="step-desc">33% vs 38% FR and 34% ES — low but not extreme. Worth understanding if it's quality of applicants or a process gap before we invest more in IT recruitment.</div>
+        </div>
+        <div class="step-owner">Dikshita</div>
+      </div>
+
+      <div class="next-step-row">
+        <div class="step-num">06</div>
+        <div class="step-body">
+          <div class="step-title">Define what "live" looks like per market</div>
+          <div class="step-desc">We have chefs but no bookings. Do we need 50 approved chefs in a city? One real paid booking? Set a threshold so we know when each market is genuinely open for business.</div>
+        </div>
+        <div class="step-owner">Siddz · Dom</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="footer-note">yhangry · Europe Launch · Internal use only</span>
+  <span class="footer-note">Data pulled 26 May 2026</span>
+</footer>
+
+</body>
+</html>
