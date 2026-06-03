@@ -3,842 +3,400 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>yhangry · EU Launch</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Clash+Display:wght@600;700&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>yhangry EU Launch</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+:root {
+  --bg:#080a0f; --surface:#10131a; --surface2:#181c26; --surface3:#1e2333;
+  --border:rgba(255,255,255,0.06); --border2:rgba(255,255,255,0.1);
+  --us:#818cf8; --eu:#f97316; --green:#34d399; --red:#f87171; --amber:#fbbf24;
+  --text:#eef0f8; --muted:#5a6380; --muted2:#8892b0;
+  --fr:#60a5fa; --it:#34d399; --es:#fbbf24;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:300; padding:0 0 120px; }
+body::before { content:''; position:fixed; inset:0; background:radial-gradient(ellipse 60% 40% at 80% 10%,rgba(249,115,22,.05) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 10% 80%,rgba(129,140,248,.04) 0%,transparent 60%); pointer-events:none; z-index:0; }
+.wrap { max-width:1120px; margin:0 auto; padding:0 36px; position:relative; z-index:1; }
+header { padding:44px 0 40px; display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid var(--border); }
+.logo { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+.logo span { color:var(--eu); }
+h1 { font-family:'Syne',sans-serif; font-weight:800; font-size:42px; letter-spacing:-.03em; line-height:1; }
+h1 em { color:var(--eu); font-style:normal; }
+.hdr-date { font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); text-align:right; }
+.hdr-date strong { color:var(--text); display:block; margin-top:2px; }
+.section { padding:52px 0 0; }
+.sec-hdr { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
+.sec-num { font-family:'DM Mono',monospace; font-size:10px; color:var(--eu); letter-spacing:.1em; border:1px solid rgba(249,115,22,.3); border-radius:4px; padding:3px 8px; }
+.sec-title { font-family:'Syne',sans-serif; font-weight:700; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted2); }
+.sec-line { flex:1; height:1px; background:var(--border); }
+.card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:26px 28px; }
+.card-lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.g4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 
-  :root {
-    --bg: #080a0f;
-    --surface: #10131a;
-    --surface2: #181c26;
-    --surface3: #1e2333;
-    --border: rgba(255,255,255,0.06);
-    --border2: rgba(255,255,255,0.1);
-    --us: #818cf8;
-    --eu: #f97316;
-    --green: #34d399;
-    --red: #f87171;
-    --amber: #fbbf24;
-    --text: #eef0f8;
-    --muted: #5a6380;
-    --muted2: #8892b0;
-    --fr: #60a5fa;
-    --it: #34d399;
-    --es: #fbbf24;
-  }
+/* HERO */
+.hero { background:var(--surface); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+.hero-top { display:grid; grid-template-columns:1fr 1px 1fr; min-height:200px; }
+.hero-side { padding:32px 36px; display:flex; flex-direction:column; justify-content:center; }
+.hero-side.us { border-right:1px solid var(--border); }
+.htag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.hdot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+.hnum { font-family:'Syne',sans-serif; font-weight:800; font-size:72px; letter-spacing:-.04em; line-height:1; }
+.hsub { font-size:13px; color:var(--muted2); margin-top:8px; line-height:1.5; }
+.hsub strong { color:var(--text); font-weight:500; }
+.race-wrap { padding:24px 36px; border-top:1px solid var(--border); background:var(--surface2); }
+.race-lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; text-align:center; }
+.race-track { display:flex; height:36px; border-radius:6px; overflow:hidden; gap:2px; }
+.race-us { background:var(--us); display:flex; align-items:center; justify-content:flex-end; padding-right:12px; width:23%; }
+.race-eu { background:var(--eu); display:flex; align-items:center; padding-left:12px; flex:1; }
+.race-val { font-family:'Syne',sans-serif; font-weight:700; font-size:15px; color:rgba(255,255,255,.9); }
+.race-labels { display:flex; justify-content:space-between; margin-top:8px; }
+.rlbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted2); display:flex; align-items:center; gap:6px; }
+.rdot { width:8px; height:8px; border-radius:2px; display:inline-block; }
 
-  * { margin:0; padding:0; box-sizing:border-box; }
+/* ACTIVATION */
+.act-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+.act-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:26px 28px; }
+.act-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+.act-row { display:flex; align-items:center; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--border); }
+.act-row:last-of-type { border-bottom:none; }
+.act-lbl { font-size:13px; color:var(--muted2); }
+.act-val { font-family:'DM Mono',monospace; font-size:14px; font-weight:500; }
+.bar-wrap { margin-top:16px; }
+.bar-lbl { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px; }
+.bar-bg { background:var(--surface3); border-radius:4px; height:8px; overflow:hidden; }
+.bar-fill { height:100%; border-radius:4px; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    padding: 0 0 120px;
-    overflow-x: hidden;
-  }
+/* SUPPLY */
+.sup-row { display:grid; grid-template-columns:140px 1fr 80px 80px 100px; align-items:center; gap:16px; padding:18px 0; border-bottom:1px solid var(--border); }
+.sup-row:last-child { border-bottom:none; }
+.sup-row.hdr { padding:6px 0 14px; }
+.sup-row.hdr span { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+.ctry { display:flex; align-items:center; gap:10px; font-weight:500; font-size:14px; }
+.num-r { font-family:'DM Mono',monospace; font-size:14px; text-align:right; }
+.bdg { display:inline-block; padding:4px 12px; border-radius:20px; font-family:'DM Mono',monospace; font-size:11px; font-weight:500; text-align:center; }
+.bfr { background:rgba(96,165,250,.12); color:var(--fr); border:1px solid rgba(96,165,250,.2); }
+.bit { background:rgba(52,211,153,.12); color:var(--it); border:1px solid rgba(52,211,153,.2); }
+.bes { background:rgba(251,191,36,.12); color:var(--es); border:1px solid rgba(251,191,36,.2); }
+.btot { background:rgba(249,115,22,.12); color:var(--eu); border:1px solid rgba(249,115,22,.2); }
 
-  /* BG TEXTURE */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 40% at 80% 10%, rgba(249,115,22,0.05) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 30% at 10% 80%, rgba(129,140,248,0.04) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
+/* DEMAND */
+.dem-grid { display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:1px; background:var(--border); border-radius:14px; overflow:hidden; margin-bottom:16px; }
+.dem-cell { background:var(--surface); padding:24px 20px; text-align:center; }
+.dem-cell.main { background:var(--surface2); }
+.dc-num { font-family:'Syne',sans-serif; font-weight:800; font-size:42px; letter-spacing:-.03em; line-height:1; }
+.dc-lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:6px; }
+.dem-cmp { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+.dcc { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:26px 28px; }
+.dcc-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+.dcc-big { font-family:'Syne',sans-serif; font-weight:800; font-size:48px; letter-spacing:-.03em; line-height:1; margin-bottom:6px; }
+.dcc-row { display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); }
+.dcc-row:last-child { border-bottom:none; }
+.dcc-lbl { font-size:13px; color:var(--muted2); }
+.dcc-val { font-family:'DM Mono',monospace; font-size:14px; font-weight:500; }
 
-  .container {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 36px;
-    position: relative;
-    z-index: 1;
-  }
+/* BOOKINGS */
+.bk-cards { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+.bk-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:26px 28px; }
+.bk-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+.bk-num { font-family:'Syne',sans-serif; font-weight:800; font-size:56px; letter-spacing:-.04em; line-height:1; }
+.bk-sub { font-size:13px; color:var(--muted2); margin-top:6px; line-height:1.5; }
+.bk-sub strong { color:var(--text); font-weight:500; }
+table { width:100%; border-collapse:collapse; }
+th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); padding:10px 14px; border-bottom:1px solid var(--border); text-align:left; white-space:nowrap; }
+td { padding:14px 14px; font-size:13px; border-bottom:1px solid var(--border); vertical-align:middle; }
+tr:last-child td { border-bottom:none; }
+tr:hover td { background:rgba(255,255,255,.015); }
+.pill { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-family:'DM Mono',monospace; }
+.pg { background:rgba(52,211,153,.12); color:var(--green); border:1px solid rgba(52,211,153,.2); }
+.pr { background:rgba(248,113,113,.12); color:var(--red); border:1px solid rgba(248,113,113,.2); }
+.vlink { color:var(--eu); text-decoration:none; font-family:'DM Mono',monospace; font-size:11px; opacity:.7; }
+.vlink:hover { opacity:1; }
+.mono-s { font-family:'DM Mono',monospace; font-size:12px; }
+.mono-c { font-family:'DM Mono',monospace; font-size:12px; text-align:center; }
 
-  /* ── HEADER ── */
-  header {
-    padding: 44px 0 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 0;
-  }
-  .logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
-  .logo span { color: var(--eu); }
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 42px;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  h1 em { color: var(--eu); font-style: normal; }
-  .hdr-right { text-align: right; }
-  .hdr-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-  .hdr-date strong { color: var(--text); }
-
-  /* ── SECTION ── */
-  .section {
-    padding: 52px 0 0;
-  }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 24px;
-  }
-  .section-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--eu);
-    letter-spacing: 0.1em;
-    border: 1px solid rgba(249,115,22,0.3);
-    border-radius: 4px;
-    padding: 3px 8px;
-  }
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted2);
-  }
-  .section-line { flex: 1; height: 1px; background: var(--border); }
-
-  /* ── CARD ── */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 26px 28px;
-    position: relative;
-    overflow: hidden;
-  }
-  .card-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
-
-  /* ── GRID ── */
-  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-  .g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
-
-  /* ── SECTION 01: US vs EU HERO ── */
-  .hero-compare {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-  }
-  .hero-top {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    min-height: 200px;
-  }
-  .hero-side {
-    padding: 32px 36px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .hero-side.us { border-right: 1px solid var(--border); }
-  .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .tag-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .hero-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 72px;
-    letter-spacing: -0.04em;
-    line-height: 1;
-  }
-  .hero-sub {
-    font-size: 13px;
-    color: var(--muted2);
-    margin-top: 8px;
-    line-height: 1.5;
-  }
-  .hero-sub strong { color: var(--text); font-weight: 500; }
-
-  /* BAR RACE */
-  .bar-race {
-    padding: 24px 36px;
-    border-top: 1px solid var(--border);
-    background: var(--surface2);
-  }
-  .bar-race-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 14px;
-    text-align: center;
-  }
-  .race-track {
-    display: flex;
-    height: 36px;
-    border-radius: 6px;
-    overflow: hidden;
-    gap: 2px;
-  }
-  .race-us {
-    background: var(--us);
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 12px;
-    transition: width 1.5s cubic-bezier(.16,1,.3,1);
-  }
-  .race-eu {
-    background: var(--eu);
-    display: flex;
-    align-items: center;
-    padding-left: 12px;
-    transition: width 1.5s cubic-bezier(.16,1,.3,1);
-    flex: 1;
-  }
-  .race-val {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    color: rgba(255,255,255,0.9);
-  }
-  .race-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 8px;
-  }
-  .race-lbl {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted2);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .lbl-dot { width: 8px; height: 8px; border-radius: 2px; }
-
-  /* ── SECTION 02: EU SUPPLY ── */
-  .supply-table { width: 100%; }
-  .supply-row {
-    display: grid;
-    grid-template-columns: 140px 1fr 80px 80px 100px;
-    align-items: center;
-    gap: 16px;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .supply-row:last-child { border-bottom: none; }
-  .supply-row.hdr { padding: 6px 0 14px; }
-  .supply-row.hdr span {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .country-cell { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 14px; }
-  .bar-col { position: relative; }
-  .bar-bg { background: var(--surface3); border-radius: 4px; height: 8px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 4px; position: relative; }
-  .bar-fill::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent 60%, rgba(255,255,255,0.2));
-    border-radius: 4px;
-  }
-  .num-r { font-family: 'DM Mono', monospace; font-size: 14px; text-align: right; }
-  .badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    text-align: center;
-  }
-  .b-fr { background: rgba(96,165,250,0.12); color: var(--fr); border: 1px solid rgba(96,165,250,0.2); }
-  .b-it { background: rgba(52,211,153,0.12); color: var(--it); border: 1px solid rgba(52,211,153,0.2); }
-  .b-es { background: rgba(251,191,36,0.12); color: var(--es); border: 1px solid rgba(251,191,36,0.2); }
-  .b-total { background: rgba(249,115,22,0.12); color: var(--eu); border: 1px solid rgba(249,115,22,0.2); }
-
-  /* ── SECTION 03: DEMAND ── */
-  .demand-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    margin-bottom: 16px;
-  }
-  .demand-cell {
-    background: var(--surface);
-    padding: 24px 20px;
-    text-align: center;
-  }
-  .demand-cell.main { background: var(--surface2); }
-  .dc-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 42px;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  .dc-lbl {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 6px;
-  }
-
-  /* ── SECTION 04: BOOKINGS ── */
-  .booking-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-  .booking-stat {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 26px 28px;
-  }
-  .bs-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 14px;
-  }
-  .bs-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 56px;
-    letter-spacing: -0.04em;
-    line-height: 1;
-  }
-  .bs-sub { font-size: 13px; color: var(--muted2); margin-top: 6px; line-height: 1.5; }
-  .bs-sub strong { color: var(--text); font-weight: 500; }
-
-  table { width: 100%; border-collapse: collapse; }
-  th {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--border);
-    text-align: left;
-    white-space: nowrap;
-  }
-  td {
-    padding: 14px 14px;
-    font-size: 13px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: middle;
-  }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,0.015); }
-  .pill {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-family: 'DM Mono', monospace;
-  }
-  .pill-green { background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
-  .pill-red { background: rgba(248,113,113,0.12); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
-  .view-link { color: var(--eu); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 11px; opacity: 0.7; }
-  .view-link:hover { opacity: 1; }
-  .mono-s { font-family: 'DM Mono', monospace; font-size: 12px; }
-
-  /* ── SECTION 05: ADS READINESS ── */
-  .country-medians {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-  .median-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px 24px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .median-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .median-card.mc-fr::before { background: var(--fr); }
-  .median-card.mc-it::before { background: var(--it); }
-  .median-card.mc-es::before { background: var(--amber); }
-  .median-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 52px;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  .median-verdict {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-top: 10px;
-  }
-  .mv-ready { background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
-  .mv-threshold { background: rgba(251,191,36,0.12); color: var(--amber); border: 1px solid rgba(251,191,36,0.2); }
-
-  /* DESTINATION TABLE */
-  .dest-table { width: 100%; }
-  .dest-row {
-    display: grid;
-    grid-template-columns: 200px 70px 1fr 80px 80px 120px;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border);
-    border-radius: 8px;
-    transition: background 0.15s;
-  }
-  .dest-row:hover { background: rgba(255,255,255,0.02); }
-  .dest-row.dhr { padding: 8px 16px 12px; }
-  .dest-row.dhr span {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .dest-name-main { font-weight: 500; font-size: 14px; }
-  .dest-name-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
-  .med-bar-wrap { display: flex; align-items: center; gap: 10px; }
-  .med-bar-val {
-    font-family: 'DM Mono', monospace;
-    font-size: 14px;
-    font-weight: 500;
-    min-width: 28px;
-  }
-  .med-bar-bg { flex: 1; background: var(--surface3); border-radius: 3px; height: 6px; overflow: hidden; }
-  .med-bar-fill { height: 100%; border-radius: 3px; }
-  .verdict-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-  .v-ready { background: rgba(52,211,153,0.1); color: var(--green); border: 1px solid rgba(52,211,153,0.15); }
-  .v-threshold { background: rgba(251,191,36,0.1); color: var(--amber); border: 1px solid rgba(251,191,36,0.15); }
-  .v-no { background: rgba(248,113,113,0.1); color: var(--red); border: 1px solid rgba(248,113,113,0.15); }
-  .market-divider {
-    padding: 14px 16px 6px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-top: 4px;
-    opacity: 0.8;
-  }
-  .mono-c { font-family: 'DM Mono', monospace; font-size: 12px; text-align: center; }
-
-  /* NOTE */
-  .note {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--amber);
-    border-radius: 10px;
-    padding: 16px 20px;
-    font-size: 13px;
-    color: var(--muted2);
-    margin-top: 16px;
-    line-height: 1.7;
-  }
-  .note strong { color: var(--text); font-weight: 500; }
-
-  /* RULE LEGEND */
-  .rule-bar {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 14px 20px;
-    background: var(--surface2);
-    border-radius: 10px;
-    margin-bottom: 16px;
-  }
-  .rule-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted2);
-  }
-  .rule-dot { width: 8px; height: 8px; border-radius: 2px; }
-  .rule-sep { width: 1px; height: 16px; background: var(--border2); }
-
-  footer {
-    margin-top: 80px;
-    text-align: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
-
-  /* ANIMATIONS */
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes growBar {
-    from { width: 0; }
-  }
-  .animate { animation: slideUp 0.6s ease both; }
-  .bar-fill, .med-bar-fill { animation: growBar 1.2s cubic-bezier(.16,1,.3,1) both; }
+/* ADS */
+.med-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:16px; }
+.med-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:28px 24px; text-align:center; position:relative; overflow:hidden; }
+.med-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+.mc-fr::before { background:var(--fr); }
+.mc-it::before { background:var(--it); }
+.mc-es::before { background:var(--amber); }
+.med-num { font-family:'Syne',sans-serif; font-weight:800; font-size:52px; letter-spacing:-.03em; line-height:1; }
+.med-v { display:inline-flex; align-items:center; gap:5px; padding:4px 12px; border-radius:20px; font-family:'DM Mono',monospace; font-size:10px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; margin-top:10px; }
+.mv-r { background:rgba(52,211,153,.12); color:var(--green); border:1px solid rgba(52,211,153,.2); }
+.mv-t { background:rgba(251,191,36,.12); color:var(--amber); border:1px solid rgba(251,191,36,.2); }
+.rule-bar { display:flex; align-items:center; gap:20px; padding:14px 20px; background:var(--surface2); border-radius:10px; margin-bottom:16px; flex-wrap:wrap; }
+.ri { display:flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; color:var(--muted2); }
+.rdot2 { width:8px; height:8px; border-radius:2px; display:inline-block; }
+.rsep { width:1px; height:16px; background:var(--border2); }
+.dest-row { display:grid; grid-template-columns:200px 70px 1fr 80px 80px 120px; align-items:center; gap:14px; padding:14px 16px; border-bottom:1px solid var(--border); border-radius:8px; transition:background .15s; }
+.dest-row:hover { background:rgba(255,255,255,.02); }
+.dest-row.dhr { padding:8px 16px 12px; }
+.dest-row.dhr span { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+.dn { font-weight:500; font-size:14px; }
+.ds { font-size:11px; color:var(--muted); margin-top:2px; }
+.mbw { display:flex; align-items:center; gap:10px; }
+.mbv { font-family:'DM Mono',monospace; font-size:14px; font-weight:500; min-width:28px; }
+.mbb { flex:1; background:var(--surface3); border-radius:3px; height:6px; overflow:hidden; }
+.mbf { height:100%; border-radius:3px; }
+.vb { display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:20px; font-family:'DM Mono',monospace; font-size:10px; font-weight:500; white-space:nowrap; }
+.vb-r { background:rgba(52,211,153,.1); color:var(--green); border:1px solid rgba(52,211,153,.15); }
+.vb-t { background:rgba(251,191,36,.1); color:var(--amber); border:1px solid rgba(251,191,36,.15); }
+.vb-n { background:rgba(248,113,113,.1); color:var(--red); border:1px solid rgba(248,113,113,.15); }
+.mkt { padding:14px 16px 6px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; margin-top:4px; opacity:.8; }
+.note { background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--amber); border-radius:10px; padding:16px 20px; font-size:13px; color:var(--muted2); margin-top:16px; line-height:1.7; }
+.note strong { color:var(--text); font-weight:500; }
+footer { margin-top:80px; text-align:center; font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:.08em; }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
 
-<!-- HEADER -->
 <header>
   <div>
-    <div class="logo">yhangry · <span>Europe Launch</span></div>
-    <h1>EU Launch — <em>US vs EU</em></h1>
+    <div class="logo">yhangry &middot; <span>Europe Launch</span></div>
+    <h1>EU Launch &mdash; <em>US vs EU</em></h1>
   </div>
-  <div class="hdr-right">
-    <div class="hdr-date">Presented <strong>June 2026</strong></div>
-  </div>
+  <div class="hdr-date">Presented <strong>June 2026</strong></div>
 </header>
 
-<!-- ══ 01 CHEF SUPPLY COMPARISON ══ -->
+<!-- 01 CHEF SIGN-UPS -->
 <div class="section">
-  <div class="section-header">
-    <span class="section-num">01</span>
-    <span class="section-title">Chef Sign-Ups — US vs EU</span>
-    <div class="section-line"></div>
+  <div class="sec-hdr">
+    <span class="sec-num">01</span>
+    <span class="sec-title">Chef Sign-Ups &mdash; US vs EU</span>
+    <div class="sec-line"></div>
   </div>
-
-  <div class="hero-compare animate">
+  <div class="hero">
     <div class="hero-top">
       <div class="hero-side us">
-        <div class="hero-tag" style="color:var(--us)">
-          <div class="tag-dot" style="background:var(--us)"></div>
-          🇺🇸 US · Full Month · September 2025
-        </div>
-        <div class="hero-num" style="color:var(--us)">163</div>
-        <div class="hero-sub">chef sign-ups in <strong>1 full month</strong></div>
+        <div class="htag" style="color:var(--us)"><span class="hdot" style="background:var(--us)"></span>US &middot; First 3 Weeks Since Announcement</div>
+        <div class="hnum" style="color:var(--us)">111</div>
+        <div class="hsub">chef sign-ups &middot; <strong>single market &middot; English only</strong></div>
       </div>
       <div class="hero-side eu">
-        <div class="hero-tag" style="color:var(--eu)">
-          <div class="tag-dot" style="background:var(--eu)"></div>
-          🇪🇺 EU · 3 Weeks · May–Jun 2026 🔥
-        </div>
-        <div class="hero-num" style="color:var(--eu)">419</div>
-        <div class="hero-sub">chef sign-ups across <strong>3 countries · 3 languages</strong></div>
+        <div class="htag" style="color:var(--eu)"><span class="hdot" style="background:var(--eu)"></span>EU &middot; First 3 Weeks Since Announcement</div>
+        <div class="hnum" style="color:var(--eu)">370</div>
+        <div class="hsub">chef sign-ups &middot; <strong>3 countries &middot; 3 languages</strong></div>
       </div>
     </div>
-    <div class="bar-race">
-      <div class="bar-race-label">Sign-up volume comparison — same timeframe</div>
+    <div class="race-wrap">
+      <div class="race-lbl">Sign-up volume &mdash; same 3-week window &middot; 3.3&times; more in EU</div>
       <div class="race-track">
-        <div class="race-us" style="width:28%">
-          <span class="race-val">163</span>
-        </div>
-        <div class="race-eu" style="width:72%">
-          <span class="race-val">419 · 2.5× more</span>
-        </div>
+        <div class="race-us"><span class="race-val">111</span></div>
+        <div class="race-eu"><span class="race-val">370 &middot; 3.3&times; more</span></div>
       </div>
       <div class="race-labels">
-        <div class="race-lbl"><div class="lbl-dot" style="background:var(--us)"></div> US</div>
-        <div class="race-lbl"><div class="lbl-dot" style="background:var(--eu)"></div> EU</div>
+        <div class="rlbl"><span class="rdot" style="background:var(--us)"></span>US</div>
+        <div class="rlbl"><span class="rdot" style="background:var(--eu)"></span>EU</div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- ══ 02 EU SUPPLY TODAY ══ -->
-<div class="section">
-  <div class="section-header">
-    <span class="section-num">02</span>
-    <span class="section-title">EU Chef Supply Today</span>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="card animate">
-    <div class="supply-row hdr">
-      <span>Country</span>
-      <span>Signed Up → Live</span>
-      <span style="text-align:right">Signed Up</span>
-      <span style="text-align:right">Live</span>
-      <span style="text-align:right">Rate</span>
+  <div class="act-grid">
+    <div class="act-card">
+      <div class="act-tag">US &middot; Activation &mdash; cohort measured at activation day (Oct 13)</div>
+      <div class="act-row"><span class="act-lbl">Signed up (first 3 weeks)</span><span class="act-val" style="color:var(--us)">111</span></div>
+      <div class="act-row"><span class="act-lbl">Activated (first 3 weeks)</span><span class="act-val" style="color:var(--us)">55.9%</span></div>
+      <div class="bar-wrap">
+        <div class="bar-lbl">Activation rate &middot; 55.9%</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:55.9%;background:var(--us)"></div></div>
+      </div>
     </div>
-    <div class="supply-row">
-      <div class="country-cell">🇫🇷 France</div>
-      <div class="bar-col"><div class="bar-bg"><div class="bar-fill" style="width:39.9%;background:var(--fr)"></div></div></div>
-      <div class="num-r">168</div>
-      <div class="num-r">67</div>
-      <div class="num-r"><span class="badge b-fr">39.9%</span></div>
-    </div>
-    <div class="supply-row">
-      <div class="country-cell">🇮🇹 Italy</div>
-      <div class="bar-col"><div class="bar-bg"><div class="bar-fill" style="width:36.6%;background:var(--it)"></div></div></div>
-      <div class="num-r">131</div>
-      <div class="num-r">48</div>
-      <div class="num-r"><span class="badge b-it">36.6%</span></div>
-    </div>
-    <div class="supply-row">
-      <div class="country-cell">🇪🇸 Spain</div>
-      <div class="bar-col"><div class="bar-bg"><div class="bar-fill" style="width:34.8%;background:var(--es)"></div></div></div>
-      <div class="num-r">115</div>
-      <div class="num-r">40</div>
-      <div class="num-r"><span class="badge b-es">34.8%</span></div>
-    </div>
-    <div class="supply-row" style="border-top:1px solid var(--border2);margin-top:4px">
-      <div class="country-cell" style="color:var(--muted2);font-weight:400">Total</div>
-      <div class="bar-col"><div class="bar-bg"><div class="bar-fill" style="width:37.4%;background:var(--eu)"></div></div></div>
-      <div class="num-r" style="font-weight:500">414</div>
-      <div class="num-r" style="font-weight:500">155</div>
-      <div class="num-r"><span class="badge b-total">37.4%</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ 03 DEMAND ══ -->
-<div class="section">
-  <div class="section-header">
-    <span class="section-num">03</span>
-    <span class="section-title">Customer Demand — Requests</span>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="demand-grid animate">
-    <div class="demand-cell main">
-      <div class="dc-num" style="color:var(--eu)">77</div>
-      <div class="dc-lbl">Total Requests</div>
-    </div>
-    <div class="demand-cell">
-      <div class="dc-num" style="color:var(--fr)">32</div>
-      <div class="dc-lbl">🇫🇷 France</div>
-    </div>
-    <div class="demand-cell">
-      <div class="dc-num" style="color:var(--es)">28</div>
-      <div class="dc-lbl">🇪🇸 Spain</div>
-    </div>
-    <div class="demand-cell">
-      <div class="dc-num" style="color:var(--it)">17</div>
-      <div class="dc-lbl">🇮🇹 Italy</div>
-    </div>
-  </div>
-
-  <div class="g2">
-    <div class="card animate">
-      <div class="card-label">Unique Customers</div>
-      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:44px;letter-spacing:-0.03em;line-height:1">61</div>
-      <div style="font-size:13px;color:var(--muted2);margin-top:6px">after deduplication</div>
-    </div>
-    <div class="card animate">
-      <div class="card-label">Language Barrier?</div>
-      <div style="font-size:14px;line-height:1.7;color:var(--muted2);margin-top:4px">
-        Requests coming in from customers across France, Italy and Spain — despite our platform being <strong style="color:var(--text)">English-first</strong>. The demand signal is real even before full localisation.
+    <div class="act-card">
+      <div class="act-tag">EU &middot; Activation &mdash; same cohort (May 11&ndash;Jun 3), measured today</div>
+      <div class="act-row"><span class="act-lbl">Signed up (first 3 weeks)</span><span class="act-val" style="color:var(--eu)">370</span></div>
+      <div class="act-row"><span class="act-lbl">Activated (first 3 weeks)</span><span class="act-val" style="color:var(--eu)">40.0%</span></div>
+      <div class="bar-wrap">
+        <div class="bar-lbl">Activation rate &middot; 40.0% &middot; rolling approvals, still rising</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:40%;background:var(--eu)"></div></div>
       </div>
     </div>
   </div>
+  <div class="note">&#9889; <strong>Context:</strong> US activation was a single batch on Oct 13 &mdash; chefs waited weeks for approval. EU approvals are rolling continuously. At 3 weeks, EU is already at 40% and climbing.</div>
 </div>
 
-<!-- ══ 04 BOOKINGS ══ -->
+<!-- 02 EU SUPPLY -->
 <div class="section">
-  <div class="section-header">
-    <span class="section-num">04</span>
-    <span class="section-title">Bookings — Before a Single Pound on Ads</span>
-    <div class="section-line"></div>
+  <div class="sec-hdr">
+    <span class="sec-num">02</span>
+    <span class="sec-title">EU Chef Supply Today</span>
+    <div class="sec-line"></div>
   </div>
-
-  <div class="booking-cards animate">
-    <div class="booking-stat">
-      <div class="bs-tag">🇺🇸 US — several months after launch</div>
-      <div class="bs-num" style="color:var(--us)">53</div>
-      <div class="bs-sub">bookings · <strong>£56,357 GMV</strong><br>With paid demand running for several months</div>
+  <div class="card">
+    <div class="sup-row hdr">
+      <span>Country</span><span>Signed Up &rarr; Live</span>
+      <span style="text-align:right">Signed Up</span><span style="text-align:right">Live</span><span style="text-align:right">Rate</span>
     </div>
-    <div class="booking-stat" style="border-color:rgba(249,115,22,0.2)">
-      <div class="bs-tag">🇪🇺 EU — before ads turned on</div>
-      <div class="bs-num" style="color:var(--eu)">3</div>
-      <div class="bs-sub">bookings · <strong>£520 live GMV</strong><br>Fully organic · no paid spend yet</div>
+    <div class="sup-row">
+      <div class="ctry">France</div>
+      <div><div class="bar-bg"><div class="bar-fill" style="width:39.9%;background:var(--fr)"></div></div></div>
+      <div class="num-r">168</div><div class="num-r">67</div>
+      <div class="num-r"><span class="bdg bfr">39.9%</span></div>
+    </div>
+    <div class="sup-row">
+      <div class="ctry">Italy</div>
+      <div><div class="bar-bg"><div class="bar-fill" style="width:36.6%;background:var(--it)"></div></div></div>
+      <div class="num-r">131</div><div class="num-r">48</div>
+      <div class="num-r"><span class="bdg bit">36.6%</span></div>
+    </div>
+    <div class="sup-row">
+      <div class="ctry">Spain</div>
+      <div><div class="bar-bg"><div class="bar-fill" style="width:34.8%;background:var(--es)"></div></div></div>
+      <div class="num-r">115</div><div class="num-r">40</div>
+      <div class="num-r"><span class="bdg bes">34.8%</span></div>
+    </div>
+    <div class="sup-row" style="border-top:1px solid var(--border2);margin-top:4px">
+      <div class="ctry" style="color:var(--muted2);font-weight:400">Total</div>
+      <div><div class="bar-bg"><div class="bar-fill" style="width:37.4%;background:var(--eu)"></div></div></div>
+      <div class="num-r" style="font-weight:500">414</div><div class="num-r" style="font-weight:500">155</div>
+      <div class="num-r"><span class="bdg btot">37.4%</span></div>
     </div>
   </div>
+</div>
 
-  <div class="card animate">
+<!-- 03 DEMAND -->
+<div class="section">
+  <div class="sec-hdr">
+    <span class="sec-num">03</span>
+    <span class="sec-title">Customer Demand &mdash; Requests</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="dem-grid">
+    <div class="dem-cell main"><div class="dc-num" style="color:var(--eu)">77</div><div class="dc-lbl">EU Total Requests &middot; Since Launch</div></div>
+    <div class="dem-cell"><div class="dc-num" style="color:var(--fr)">32</div><div class="dc-lbl">France</div></div>
+    <div class="dem-cell"><div class="dc-num" style="color:var(--es)">28</div><div class="dc-lbl">Spain</div></div>
+    <div class="dem-cell"><div class="dc-num" style="color:var(--it)">17</div><div class="dc-lbl">Italy</div></div>
+  </div>
+  <div class="dem-cmp">
+    <div class="dcc">
+      <div class="dcc-tag">US &middot; First 3 Weeks Since Announcement</div>
+      <div class="dcc-big" style="color:var(--us)">163</div>
+      <div class="dcc-row"><span class="dcc-lbl">Unique customers</span><span class="dcc-val">145</span></div>
+      <div class="dcc-row"><span class="dcc-lbl">Repeat customers</span><span class="dcc-val">15 <span style="color:var(--muted);font-size:11px">(10.3%)</span></span></div>
+      <div class="dcc-row"><span class="dcc-lbl">Platform</span><span class="dcc-val" style="color:var(--muted)">English &middot; 1 market</span></div>
+    </div>
+    <div class="dcc">
+      <div class="dcc-tag">EU &middot; Since Launch &middot; No Ads &middot; English-First</div>
+      <div class="dcc-big" style="color:var(--eu)">77</div>
+      <div class="dcc-row"><span class="dcc-lbl">Unique customers</span><span class="dcc-val">61</span></div>
+      <div class="dcc-row"><span class="dcc-lbl">Repeat customers</span><span class="dcc-val" style="color:var(--green)">10 <span style="font-size:11px">(16.4%)</span></span></div>
+      <div class="dcc-row"><span class="dcc-lbl">Platform</span><span class="dcc-val" style="color:var(--muted)">English-first &middot; 3 markets</span></div>
+    </div>
+  </div>
+  <div class="note">&#128257; <strong>EU repeat rate is 60% higher than US</strong> (16.4% vs 10.3%) &mdash; customers are returning to the platform before we have run a single ad or fully localised the experience.</div>
+</div>
+
+<!-- 04 BOOKINGS -->
+<div class="section">
+  <div class="sec-hdr">
+    <span class="sec-num">04</span>
+    <span class="sec-title">Bookings &mdash; Before a Single Pound on Ads</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="bk-cards">
+    <div class="bk-card">
+      <div class="bk-tag">US &middot; First 3 Weeks Since Announcement</div>
+      <div class="bk-num" style="color:var(--us)">0</div>
+      <div class="bk-sub">bookings in first 3 weeks<br><strong>First booking arrived in week 4</strong></div>
+    </div>
+    <div class="bk-card" style="border-color:rgba(249,115,22,.2)">
+      <div class="bk-tag">EU &middot; Since Launch &middot; No Ads</div>
+      <div class="bk-num" style="color:var(--eu)">3</div>
+      <div class="bk-sub">bookings &middot; <strong>&pound;1,782 total GMV</strong><br>Before the US had its first booking</div>
+    </div>
+  </div>
+  <div class="card">
     <table>
       <thead>
-        <tr>
-          <th>#</th><th>Order</th><th>Customer</th><th>Country</th><th>Guests</th><th>GMV</th><th>Status</th><th>Meal Date</th><th></th>
-        </tr>
+        <tr><th>#</th><th>Order</th><th>Customer</th><th>Country</th><th>Guests</th><th>GMV</th><th>Status</th><th>Meal Date</th><th></th></tr>
       </thead>
       <tbody>
         <tr>
-          <td style="color:var(--muted)">1</td>
-          <td><span class="mono-s">170700</span></td>
-          <td>Josh Larivee</td>
-          <td>🇮🇹 Italy</td>
-          <td class="mono-s">4</td>
-          <td class="mono-s">£520</td>
-          <td><span class="pill pill-green">Assigned to chef</span></td>
-          <td class="mono-s">4 Jun 2026</td>
-          <td><a class="view-link" href="https://yhangry.com/nova/resources/orders/170700" target="_blank">↗</a></td>
+          <td style="color:var(--muted)">1</td><td><span class="mono-s">170700</span></td><td>Josh Larivee</td><td>Italy</td>
+          <td class="mono-s">4</td><td class="mono-s">&pound;520</td>
+          <td><span class="pill pg">Assigned to chef</span></td><td class="mono-s">4 Jun 2026</td>
+          <td><a class="vlink" href="https://yhangry.com/nova/resources/orders/170700" target="_blank">&#8599;</a></td>
         </tr>
         <tr>
-          <td style="color:var(--muted)">2</td>
-          <td><span class="mono-s">169118</span></td>
-          <td>Shivani Kotecha</td>
-          <td>🇫🇷 France · Cannes</td>
-          <td class="mono-s">9</td>
-          <td class="mono-s" style="color:var(--muted);text-decoration:line-through">£585.52</td>
-          <td><span class="pill pill-red">Refunded</span></td>
-          <td class="mono-s">14 Jun 2026</td>
-          <td><a class="view-link" href="https://yhangry.com/nova/resources/orders/169118" target="_blank">↗</a></td>
+          <td style="color:var(--muted)">2</td><td><span class="mono-s">169118</span></td><td>Shivani Kotecha</td><td>France &middot; Cannes</td>
+          <td class="mono-s">9</td><td class="mono-s">&pound;585.52</td>
+          <td><span class="pill pr">Refunded</span></td><td class="mono-s">14 Jun 2026</td>
+          <td><a class="vlink" href="https://yhangry.com/nova/resources/orders/169118" target="_blank">&#8599;</a></td>
         </tr>
         <tr>
-          <td style="color:var(--muted)">3</td>
-          <td><span class="mono-s">170467</span></td>
-          <td>Shivani Kotecha</td>
-          <td>🇫🇷 France · Cannes</td>
-          <td class="mono-s">9</td>
-          <td class="mono-s" style="color:var(--muted);text-decoration:line-through">£676</td>
-          <td><span class="pill pill-red">Refunded</span></td>
-          <td class="mono-s">14 Jun 2026</td>
-          <td><a class="view-link" href="https://yhangry.com/nova/resources/orders/170467" target="_blank">↗</a></td>
+          <td style="color:var(--muted)">3</td><td><span class="mono-s">170467</span></td><td>Shivani Kotecha</td><td>France &middot; Cannes</td>
+          <td class="mono-s">9</td><td class="mono-s">&pound;676</td>
+          <td><span class="pill pr">Refunded</span></td><td class="mono-s">14 Jun 2026</td>
+          <td><a class="vlink" href="https://yhangry.com/nova/resources/orders/170467" target="_blank">&#8599;</a></td>
         </tr>
       </tbody>
     </table>
-    <div class="note">
-      ⚠️ <strong>1 refund flagged as possible disintermediation</strong> — customer booked, then possibly went direct to the chef on call.
-    </div>
+    <div class="note">&#9888; <strong>1 refund flagged as possible disintermediation</strong> &mdash; customer booked, then possibly went direct to the chef on call.</div>
   </div>
 </div>
 
-<!-- ══ 05 ADS READINESS ══ -->
+<!-- 05 ADS READINESS -->
 <div class="section">
-  <div class="section-header">
-    <span class="section-num">05</span>
-    <span class="section-title">Where to Start Spending — Destination Readiness</span>
-    <div class="section-line"></div>
+  <div class="sec-hdr">
+    <span class="sec-num">05</span>
+    <span class="sec-title">Where to Start Spending &mdash; Destination Readiness</span>
+    <div class="sec-line"></div>
   </div>
-
-  <div class="country-medians animate">
-    <div class="median-card mc-it">
-      <div class="card-label">🇮🇹 Italy · Median Q/Req</div>
-      <div class="median-num" style="color:var(--it)">3.0</div>
-      <div class="median-verdict mv-ready">✓ Ads-ready</div>
+  <div class="med-cards">
+    <div class="med-card mc-it">
+      <div class="card-lbl">Italy &middot; Median Q/Req</div>
+      <div class="med-num" style="color:var(--it)">3.0</div>
+      <div class="med-v mv-r">&#10003; Ads-ready</div>
     </div>
-    <div class="median-card mc-fr">
-      <div class="card-label">🇫🇷 France · Median Q/Req</div>
-      <div class="median-num" style="color:var(--fr)">2.5</div>
-      <div class="median-verdict mv-ready">✓ Ads-ready</div>
+    <div class="med-card mc-fr">
+      <div class="card-lbl">France &middot; Median Q/Req</div>
+      <div class="med-num" style="color:var(--fr)">2.5</div>
+      <div class="med-v mv-r">&#10003; Ads-ready</div>
     </div>
-    <div class="median-card mc-es">
-      <div class="card-label">🇪🇸 Spain · Median Q/Req</div>
-      <div class="median-num" style="color:var(--amber)">2.0</div>
-      <div class="median-verdict mv-threshold">⚡ At threshold</div>
+    <div class="med-card mc-es">
+      <div class="card-lbl">Spain &middot; Median Q/Req</div>
+      <div class="med-num" style="color:var(--amber)">2.0</div>
+      <div class="med-v mv-t">&#9889; At threshold</div>
     </div>
   </div>
-
   <div class="rule-bar">
-    <div class="rule-item"><div class="rule-dot" style="background:var(--green)"></div> &gt; 2.0 — Ads-ready</div>
-    <div class="rule-sep"></div>
-    <div class="rule-item"><div class="rule-dot" style="background:var(--amber)"></div> = 2.0 — At threshold</div>
-    <div class="rule-sep"></div>
-    <div class="rule-item"><div class="rule-dot" style="background:var(--red)"></div> &lt; 2.0 — Not ready</div>
-    <div class="rule-sep"></div>
-    <div class="rule-item" style="color:var(--muted)">Metric: median priced chef quotes per customer request · sample: 120 requests</div>
+    <div class="ri"><span class="rdot2" style="background:var(--green)"></span>&gt; 2.0 &mdash; Ads-ready</div>
+    <div class="rsep"></div>
+    <div class="ri"><span class="rdot2" style="background:var(--amber)"></span>= 2.0 &mdash; At threshold</div>
+    <div class="rsep"></div>
+    <div class="ri"><span class="rdot2" style="background:var(--red)"></span>&lt; 2.0 &mdash; Not ready</div>
+    <div class="rsep"></div>
+    <div class="ri" style="color:var(--muted)">Metric: median priced chef quotes per request &middot; 120 requests sampled</div>
   </div>
-
-  <div class="card animate">
+  <div class="card">
     <div class="dest-row dhr">
-      <span>Destination</span><span>Requests</span><span>Median Q/Req</span><span style="text-align:center">Zero-cov</span><span style="text-align:center">≥2 rate</span><span>Verdict</span>
+      <span>Destination</span><span>Requests</span><span>Median Q/Req</span>
+      <span style="text-align:center">Zero-cov</span><span style="text-align:center">&ge;2 rate</span><span>Verdict</span>
     </div>
-
-    <div class="market-divider" style="color:var(--fr)">🇫🇷 France</div>
-    <div class="dest-row"><div><div class="dest-name-main">Côte d'Azur</div><div class="dest-name-sub">Cannes · Antibes · St-Tropez</div></div><div class="mono-c">13</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--green)">3.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:75%;background:var(--green)"></div></div></div><div class="mono-c">0%</div><div class="mono-c">85%</div><div><span class="verdict-badge v-ready">✓ Ads-ready</span></div></div>
-    <div class="dest-row"><div><div class="dest-name-main">South France</div><div class="dest-name-sub">Perpignan · Bordeaux</div></div><div class="mono-c">5</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--green)">4.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:100%;background:var(--green)"></div></div></div><div class="mono-c">20%</div><div class="mono-c">60%</div><div><span class="verdict-badge v-ready">✓ Ads-ready</span></div></div>
-    <div class="dest-row"><div><div class="dest-name-main">Provence</div><div class="dest-name-sub">Joucas · Le Tholonet</div></div><div class="mono-c">9</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--amber)">2.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:50%;background:var(--amber)"></div></div></div><div class="mono-c">33%</div><div class="mono-c">56%</div><div><span class="verdict-badge v-threshold">⚡ At threshold</span></div></div>
-    <div class="dest-row"><div><div class="dest-name-main">French Alps</div><div class="dest-name-sub">Megève</div></div><div class="mono-c">3</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--amber)">2.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:50%;background:var(--amber)"></div></div></div><div class="mono-c">32%</div><div class="mono-c">67%</div><div><span class="verdict-badge v-threshold">⚡ At threshold</span></div></div>
-    <div class="dest-row"><div><div class="dest-name-main">Corsica</div><div class="dest-name-sub">Bonifacio · Calvi</div></div><div class="mono-c">4</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--red)">0.5</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:12%;background:var(--red)"></div></div></div><div class="mono-c">50%</div><div class="mono-c">25%</div><div><span class="verdict-badge v-no">✗ Not ready</span></div></div>
-    <div class="dest-row"><div><div class="dest-name-main">Normandy</div><div class="dest-name-sub">Alençon</div></div><div class="mono-c">4</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--red)">0.5</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:12%;background:var(--red)"></div></div></div><div class="mono-c">50%</div><div class="mono-c">25%</div><div><span class="verdict-badge v-no">✗ Not ready</span></div></div>
-
-    <div class="market-divider" style="color:var(--it)">🇮🇹 Italy</div>
-    <div class="dest-row"><div><div class="dest-name-main">Tuscany</div><div class="dest-name-sub">Lucca · Firenze · Siena</div></div><div class="mono-c">12</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--green)">3.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:75%;background:var(--green)"></div></div></div><div class="mono-c">25%</div><div class="mono-c">58%</div><div><span class="verdict-badge v-ready">✓ Ads-ready</span></div></div>
-    <div class="dest-row"><div><div class="dest-name-main">Rome</div><div class="dest-name-sub">City</div></div><div class="mono-c">3</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--green)">3.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:75%;background:var(--green)"></div></div></div><div class="mono-c">0%</div><div class="mono-c">100%</div><div><span class="verdict-badge v-ready">✓ Ads-ready</span></div></div>
-    <div class="dest-row"><div><div class="dest-name-main">Amalfi Coast</div><div class="dest-name-sub">Sorrento · Capri</div></div><div class="mono-c">4</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--amber)">2.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:50%;background:var(--amber)"></div></div></div><div class="mono-c">0%</div><div class="mono-c">50%</div><div><span class="verdict-badge v-threshold">⚡ At threshold</span></div></div>
-
-    <div class="market-divider" style="color:var(--es)">🇪🇸 Spain</div>
-    <div class="dest-row"><div><div class="dest-name-main">Mallorca</div><div class="dest-name-sub">Manacor · Palma</div></div><div class="mono-c">9</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--green)">4.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:100%;background:var(--green)"></div></div></div><div class="mono-c">11%</div><div class="mono-c">89%</div><div><span class="verdict-badge v-ready">✓ Ads-ready</span></div></div>
-    <div class="dest-row"><div><div class="dest-name-main">Costa Brava</div><div class="dest-name-sub">Barcelona area</div></div><div class="mono-c">5</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--green)">3.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:75%;background:var(--green)"></div></div></div><div class="mono-c">20%</div><div class="mono-c">60%</div><div><span class="verdict-badge v-ready">✓ Ads-ready</span></div></div>
-    <div class="dest-row"><div><div class="dest-name-main">Tenerife</div><div class="dest-name-sub">Adeje</div></div><div class="mono-c">3</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--amber)">2.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:50%;background:var(--amber)"></div></div></div><div class="mono-c">0%</div><div class="mono-c">67%</div><div><span class="verdict-badge v-threshold">⚡ At threshold</span></div></div>
-    <div class="dest-row"><div><div class="dest-name-main">Basque Country</div><div class="dest-name-sub">San Sebastián</div></div><div class="mono-c">3</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--amber)">2.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:50%;background:var(--amber)"></div></div></div><div class="mono-c">0%</div><div class="mono-c">67%</div><div><span class="verdict-badge v-threshold">⚡ At threshold</span></div></div>
-    <div class="dest-row" style="border-bottom:none"><div><div class="dest-name-main">Ibiza</div><div class="dest-name-sub">Santa Eulària</div></div><div class="mono-c">3</div><div class="med-bar-wrap"><span class="med-bar-val" style="color:var(--red)">1.0</span><div class="med-bar-bg"><div class="med-bar-fill" style="width:25%;background:var(--red)"></div></div></div><div class="mono-c">33%</div><div class="mono-c">33%</div><div><span class="verdict-badge v-no">✗ Not ready</span></div></div>
-
-    <div class="note">
-      🟢 <strong>Start here:</strong> Côte d'Azur, Mallorca, Tuscany, Rome — strongest supply (median 3–4), lowest zero-cover. Small budgets, geo-targeted.<br><br>
-      🔴 <strong>Hold:</strong> Corsica, Normandy, Ibiza — half of requests get zero chef quotes. Paid demand here wastes money and frustrates customers.
-    </div>
+    <div class="mkt" style="color:var(--fr)">France</div>
+    <div class="dest-row"><div><div class="dn">Cote d'Azur</div><div class="ds">Cannes &middot; Antibes &middot; St-Tropez</div></div><div class="mono-c">13</div><div class="mbw"><span class="mbv" style="color:var(--green)">3.0</span><div class="mbb"><div class="mbf" style="width:75%;background:var(--green)"></div></div></div><div class="mono-c">0%</div><div class="mono-c">85%</div><div><span class="vb vb-r">&#10003; Ads-ready</span></div></div>
+    <div class="dest-row"><div><div class="dn">South France</div><div class="ds">Perpignan &middot; Bordeaux</div></div><div class="mono-c">5</div><div class="mbw"><span class="mbv" style="color:var(--green)">4.0</span><div class="mbb"><div class="mbf" style="width:100%;background:var(--green)"></div></div></div><div class="mono-c">20%</div><div class="mono-c">60%</div><div><span class="vb vb-r">&#10003; Ads-ready</span></div></div>
+    <div class="dest-row"><div><div class="dn">Provence</div><div class="ds">Joucas &middot; Le Tholonet</div></div><div class="mono-c">9</div><div class="mbw"><span class="mbv" style="color:var(--amber)">2.0</span><div class="mbb"><div class="mbf" style="width:50%;background:var(--amber)"></div></div></div><div class="mono-c">33%</div><div class="mono-c">56%</div><div><span class="vb vb-t">&#9889; At threshold</span></div></div>
+    <div class="dest-row"><div><div class="dn">French Alps</div><div class="ds">Megeve</div></div><div class="mono-c">3</div><div class="mbw"><span class="mbv" style="color:var(--amber)">2.0</span><div class="mbb"><div class="mbf" style="width:50%;background:var(--amber)"></div></div></div><div class="mono-c">32%</div><div class="mono-c">67%</div><div><span class="vb vb-t">&#9889; At threshold</span></div></div>
+    <div class="dest-row"><div><div class="dn">Corsica</div><div class="ds">Bonifacio &middot; Calvi</div></div><div class="mono-c">4</div><div class="mbw"><span class="mbv" style="color:var(--red)">0.5</span><div class="mbb"><div class="mbf" style="width:12%;background:var(--red)"></div></div></div><div class="mono-c">50%</div><div class="mono-c">25%</div><div><span class="vb vb-n">&#10007; Not ready</span></div></div>
+    <div class="dest-row"><div><div class="dn">Normandy</div><div class="ds">Alencon</div></div><div class="mono-c">4</div><div class="mbw"><span class="mbv" style="color:var(--red)">0.5</span><div class="mbb"><div class="mbf" style="width:12%;background:var(--red)"></div></div></div><div class="mono-c">50%</div><div class="mono-c">25%</div><div><span class="vb vb-n">&#10007; Not ready</span></div></div>
+    <div class="mkt" style="color:var(--it)">Italy</div>
+    <div class="dest-row"><div><div class="dn">Tuscany</div><div class="ds">Lucca &middot; Firenze &middot; Siena</div></div><div class="mono-c">12</div><div class="mbw"><span class="mbv" style="color:var(--green)">3.0</span><div class="mbb"><div class="mbf" style="width:75%;background:var(--green)"></div></div></div><div class="mono-c">25%</div><div class="mono-c">58%</div><div><span class="vb vb-r">&#10003; Ads-ready</span></div></div>
+    <div class="dest-row"><div><div class="dn">Rome</div><div class="ds">City</div></div><div class="mono-c">3</div><div class="mbw"><span class="mbv" style="color:var(--green)">3.0</span><div class="mbb"><div class="mbf" style="width:75%;background:var(--green)"></div></div></div><div class="mono-c">0%</div><div class="mono-c">100%</div><div><span class="vb vb-r">&#10003; Ads-ready</span></div></div>
+    <div class="dest-row"><div><div class="dn">Amalfi Coast</div><div class="ds">Sorrento &middot; Capri</div></div><div class="mono-c">4</div><div class="mbw"><span class="mbv" style="color:var(--amber)">2.0</span><div class="mbb"><div class="mbf" style="width:50%;background:var(--amber)"></div></div></div><div class="mono-c">0%</div><div class="mono-c">50%</div><div><span class="vb vb-t">&#9889; At threshold</span></div></div>
+    <div class="mkt" style="color:var(--es)">Spain</div>
+    <div class="dest-row"><div><div class="dn">Mallorca</div><div class="ds">Manacor &middot; Palma</div></div><div class="mono-c">9</div><div class="mbw"><span class="mbv" style="color:var(--green)">4.0</span><div class="mbb"><div class="mbf" style="width:100%;background:var(--green)"></div></div></div><div class="mono-c">11%</div><div class="mono-c">89%</div><div><span class="vb vb-r">&#10003; Ads-ready</span></div></div>
+    <div class="dest-row"><div><div class="dn">Costa Brava</div><div class="ds">Barcelona area</div></div><div class="mono-c">5</div><div class="mbw"><span class="mbv" style="color:var(--green)">3.0</span><div class="mbb"><div class="mbf" style="width:75%;background:var(--green)"></div></div></div><div class="mono-c">20%</div><div class="mono-c">60%</div><div><span class="vb vb-r">&#10003; Ads-ready</span></div></div>
+    <div class="dest-row"><div><div class="dn">Tenerife</div><div class="ds">Adeje</div></div><div class="mono-c">3</div><div class="mbw"><span class="mbv" style="color:var(--amber)">2.0</span><div class="mbb"><div class="mbf" style="width:50%;background:var(--amber)"></div></div></div><div class="mono-c">0%</div><div class="mono-c">67%</div><div><span class="vb vb-t">&#9889; At threshold</span></div></div>
+    <div class="dest-row"><div><div class="dn">Basque Country</div><div class="ds">San Sebastian</div></div><div class="mono-c">3</div><div class="mbw"><span class="mbv" style="color:var(--amber)">2.0</span><div class="mbb"><div class="mbf" style="width:50%;background:var(--amber)"></div></div></div><div class="mono-c">0%</div><div class="mono-c">67%</div><div><span class="vb vb-t">&#9889; At threshold</span></div></div>
+    <div class="dest-row" style="border-bottom:none"><div><div class="dn">Ibiza</div><div class="ds">Santa Eularia</div></div><div class="mono-c">3</div><div class="mbw"><span class="mbv" style="color:var(--red)">1.0</span><div class="mbb"><div class="mbf" style="width:25%;background:var(--red)"></div></div></div><div class="mono-c">33%</div><div class="mono-c">33%</div><div><span class="vb vb-n">&#10007; Not ready</span></div></div>
+    <div class="note">&#9679; <strong>Start here:</strong> Cote d'Azur, Mallorca, Tuscany, Rome &mdash; strongest supply (median 3&ndash;4), lowest zero-cover. Small budgets, geo-targeted.<br><br>&#9679; <strong>Hold:</strong> Corsica, Normandy, Ibiza &mdash; half of requests get zero chef quotes. Paid demand here wastes budget and damages trust.</div>
   </div>
 </div>
 
-<footer>yhangry · EU Launch · Source: PROD Analytics · BigQuery · June 2026</footer>
-
+<footer>yhangry &middot; EU Launch &middot; Source: PROD Analytics &middot; BigQuery &middot; June 2026</footer>
 </div>
 </body>
 </html>
